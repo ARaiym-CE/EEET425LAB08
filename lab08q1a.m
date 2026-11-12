@@ -1,4 +1,4 @@
-%%EEET 425 LAB 08 Q1
+%%EEET 425 LAB 08 q1a
 
 ws1 = 0.3*pi; %lower stopband edge
 wp1 = 0.4*pi; %lower passband edge
@@ -22,10 +22,10 @@ w_ham = hamming(M)'; %part c hamming window as a row vector
 h = w_ham .* hd; %part d windowed bandpass filter
 
 [H, w] = freqz(h, 1, 8192); %frequency response
-
 magdB = 20 * log10(abs(H) + eps); %magnitude in dB
 pb = (w >= wp1) & (w <= wp2); %passband indices
 sb = (w <= ws1) | (w >= ws2); %stopband indices
+
 Rp = max(magdB(pb)) - min(magdB(pb)) %part e passband ripple in dB
 As = -max(magdB(sb)) %part e stopband attenuation in dB
 
